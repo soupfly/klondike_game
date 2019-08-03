@@ -9,21 +9,6 @@ only dummy cards can move when player picks them up. this should solve the probl
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function love.load()
 	mousePressed = nil
 	mouseReleased = nil
@@ -32,7 +17,7 @@ function love.load()
 	Ydraw = 0
 	dragging = false
 	timer = 0
-	love.window.setMode(800, 600)
+--	love.window.setMode(800, 600)
 	scale = love.graphics.getWidth() / 1920
 	cardSpeed = 100 * scale
 	cardWidth = 237.359 * scale
