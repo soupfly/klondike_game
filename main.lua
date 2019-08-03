@@ -107,26 +107,12 @@ Second Table
 8 -- Center position of slot on the X axis
 9 -- touch bool
 10 -- drag bool
-
 ]]--
-	cardSlots[1][6], cardSlots[1][7] = carZip(cardSlots[1][4], cardSlots[1][5], cardSlots[1][6], cardSlots[1][7], DT)
-	cardSlots[2][6], cardSlots[2][7] = carZip(cardSlots[2][4], cardSlots[2][5], cardSlots[2][6], cardSlots[2][7], DT)
-	cardSlots[3][6], cardSlots[3][7] = carZip(cardSlots[3][4], cardSlots[3][5], cardSlots[3][6], cardSlots[3][7], DT)
-	cardSlots[4][6], cardSlots[4][7] = carZip(cardSlots[4][4], cardSlots[4][5], cardSlots[4][6], cardSlots[4][7], DT)
-	
-	cardSlots[5][6], cardSlots[5][7] = carZip(cardSlots[5][4], cardSlots[5][5], cardSlots[5][6], cardSlots[5][7], DT)
-	cardSlots[6][6], cardSlots[6][7] = carZip(cardSlots[6][4], cardSlots[6][5], cardSlots[6][6], cardSlots[6][7], DT)
-	
-	cardSlots[7][6], cardSlots[7][7] = carZip(cardSlots[7][4], cardSlots[7][5], cardSlots[7][6], cardSlots[7][7], DT)
-	cardSlots[8][6], cardSlots[8][7] = carZip(cardSlots[8][4], cardSlots[8][5], cardSlots[8][6], cardSlots[8][7], DT)
-	cardSlots[9][6], cardSlots[9][7] = carZip(cardSlots[9][4], cardSlots[9][5], cardSlots[9][6], cardSlots[9][7], DT)
-	cardSlots[10][6], cardSlots[10][7] = carZip(cardSlots[10][4], cardSlots[10][5], cardSlots[10][6], cardSlots[10][7], DT)
-	cardSlots[11][6], cardSlots[11][7] = carZip(cardSlots[11][4], cardSlots[11][5], cardSlots[11][6], cardSlots[11][7], DT)
-	cardSlots[12][6], cardSlots[12][7] = carZip(cardSlots[12][4], cardSlots[12][5], cardSlots[12][6], cardSlots[12][7], DT)
 
 
 --checks if cards are touching mouse
 	for i = 1, 12, 1 do
+		cardSlots[i][6], cardSlots[i][7] = carZip(cardSlots[i][4], cardSlots[i][5], cardSlots[i][6], cardSlots[i][7], DT)	
 		drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], true) --Ace1
 	end
 
@@ -134,19 +120,4 @@ Second Table
 --draw the cards
 
 
-	--[[
-	drawCard(cardSlots[2][2], cardSlots[2][3], cardSlots[2][1], cardSlots[2][6], cardSlots[2][7], true) --Ace2
-	drawCard(cardSlots[3][2], cardSlots[3][3], cardSlots[3][1], cardSlots[3][6], cardSlots[3][7], true) --Ace3
-	drawCard(cardSlots[4][2], cardSlots[4][3], cardSlots[4][1], cardSlots[4][6], cardSlots[4][7], true) --Ace4
-
-	drawCard(cardSlots[5][2], cardSlots[5][3], cardSlots[5][1], cardSlots[5][6], cardSlots[5][7], true) -- row1
-	drawCard(cardSlots[6][2], cardSlots[6][3], cardSlots[6][1], cardSlots[6][6], cardSlots[6][7], true) -- row1
-
-	drawCard(cardSlots[7][2], cardSlots[7][3], cardSlots[7][1], cardSlots[7][6], cardSlots[7][7], true) -- row1
-	drawCard(cardSlots[8][2], cardSlots[8][3], cardSlots[8][1], cardSlots[8][6], cardSlots[8][7], true) -- row1
-	drawCard(cardSlots[9][2], cardSlots[9][3], cardSlots[9][1], cardSlots[9][6], cardSlots[9][7], true) -- row1
-	drawCard(cardSlots[10][2], cardSlots[10][3], cardSlots[10][1], cardSlots[10][6], cardSlots[10][7], true) -- row1
-	drawCard(cardSlots[11][2], cardSlots[11][3], cardSlots[11][1], cardSlots[11][6], cardSlots[11][7], true) -- row1
-	drawCard(cardSlots[12][2], cardSlots[12][3], cardSlots[12][1], cardSlots[12][6], cardSlots[12][7], true) -- row1
-	--]]
 end
