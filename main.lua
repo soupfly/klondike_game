@@ -1,18 +1,8 @@
 --[[
 todo list
 
-function that checks if mouse is touching more than one card
-	
-function that puts cards in card slots when dropped
-	get the card info when picked up
-	when dropped check where it goes with collision
-function that uses the card list and randomises them
-	cards can not repeat in list
-	all cards must be used
-
-
-
-
+make a dummy card. when a card is picked up, the card is put in a variable. slot 14.
+only dummy cards can move when player picks them up. this should solve the problem where players can move multiple cards.
 
 
 ]]--
@@ -117,7 +107,7 @@ Second Table
 
 ]]--
 
-
+--[[
 	cardSlots[1][6], cardSlots[1][7] = carZip(cardSlots[1][4], cardSlots[1][5], cardSlots[1][6], cardSlots[1][7], DT)
 	cardSlots[2][6], cardSlots[2][7] = carZip(cardSlots[2][4], cardSlots[2][5], cardSlots[2][6], cardSlots[2][7], DT)
 	cardSlots[3][6], cardSlots[3][7] = carZip(cardSlots[3][4], cardSlots[3][5], cardSlots[3][6], cardSlots[3][7], DT)
@@ -132,11 +122,12 @@ Second Table
 	cardSlots[10][6], cardSlots[10][7] = carZip(cardSlots[10][4], cardSlots[10][5], cardSlots[10][6], cardSlots[10][7], DT)
 	cardSlots[11][6], cardSlots[11][7] = carZip(cardSlots[11][4], cardSlots[11][5], cardSlots[11][6], cardSlots[11][7], DT)
 	cardSlots[12][6], cardSlots[12][7] = carZip(cardSlots[12][4], cardSlots[12][5], cardSlots[12][6], cardSlots[12][7], DT)
-
+--]]
 --checks if cards are touching mouse
 	for i = 1, 12, 1 do
 		drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], true) --Ace1
 	end
+
 	for i = 1, 12, 1 do
 		cardSlots[i][9] = cardsTouch(cardSlots[i])
 	end

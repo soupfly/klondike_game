@@ -1,4 +1,5 @@
 if mouseDown then
+	
 	local carddrag
 	for i = 1, 12, 1 do
 		if cardSlots[i][9] then
