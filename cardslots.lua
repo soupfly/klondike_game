@@ -9,7 +9,7 @@ cardSlots = {
 		[7] = 58.69 * scale, --Y postiion of dragging card
 		[8] = (cardWidth/2) + 32.31 * scale, --center axis used for detecting drag and drop collision
 		[9] = false, --if card is touched
-		[10] = true --flipped
+		[10] = true --flip bool for drawcard
 	},
 	[2] = {
 		[1] = "Ace2", --slot name

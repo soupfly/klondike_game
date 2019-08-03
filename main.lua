@@ -17,7 +17,7 @@ function love.load()
 	Ydraw = 0
 	dragging = false
 	timer = 0
-	love.window.setMode(640, 480)
+--	love.window.setMode(640, 480)
 	scale = love.graphics.getWidth() / 1920
 	cardSpeed = 600 * scale
 	cardWidth = 237.359 * scale
@@ -30,9 +30,7 @@ function love.load()
 		tiles = love.graphics.newImage("tileset.png"),
 		tilesQuad = {}
 	}
---checks for OS and changes the dofiles
-	
-
+--loads the functions
 	if OS == "Android" then
 		dofile("storage/emulated/0/LOVEGAME/cardstouch.lua")
 		dofile("storage/emulated/0/LOVEGAME/quads.lua")
@@ -47,11 +45,10 @@ function love.load()
 end
 
 function love.update(dt)
+	--I needed a global DT for my draw functions
+	--I'll change it later
 	DT = dt
 	mouseDown = love.mouse.isDown(1)
-
-	timer = timer + dt
-
 end
 
 function love.keypressed(key, scancode, isrepeat)
@@ -75,15 +72,18 @@ function love.mousereleased(x, y, button)
 end
 
 function love.draw()
+	--loads the cards drag function
+	--this one needs to be reworked
+	--I set it to move a bunch of cards to test it out
 	if OS == "Android" then
 		dofile("storage/emulated/0/LOVEGAME/cardsdrag.lua")
 	else
 		dofile("card/cardsdrag.lua")
 	end
-
+--draws the playing board
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.draw(images.board, 0, 0, 0, scale, scale)
-	love.graphics.draw(images.grain, 0, 0, 0, scale, scale)
+--	love.graphics.draw(images.grain, 0, 0, 0, scale, scale)
 	love.graphics.draw(images.tiles, cardQuad.backCard, cardSlots[13][4], cardSlots[13][5], 0, scale, scale)
 --[[
 
@@ -106,15 +106,13 @@ Second Table
 10 -- drag bool
 ]]--
 
-
 --checks if cards are touching mouse
 	for i = 1, 12, 1 do
-		cardSlots[i][6], cardSlots[i][7] = carZip(cardSlots[i][4], cardSlots[i][5], cardSlots[i][6], cardSlots[i][7], DT)	
+		--cards will zip if they are away from their original spots
+		cardSlots[i][6], cardSlots[i][7] = carZip(cardSlots[i][4], cardSlots[i][5], cardSlots[i][6], cardSlots[i][7], DT)
+		--draws all the cards in the cardSlots table
+		--I have more plans to make cardSlots the container for all the cards being picked up and dropped around
+		--the board
 		drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], cardSlots[i][10])
 	end
-
---if cards are dropped, they zip back to the slot
---draw the cards
-
-
 end
