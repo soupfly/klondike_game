@@ -30,8 +30,9 @@ function love.load()
 	OS = love.system.getOS()
 	DT = nil
 	Ydraw = 0
+	dragging = false
 	timer = 0
---	love.window.setMode(800, 600)
+	love.window.setMode(800, 600)
 	scale = love.graphics.getWidth() / 1920
 	cardSpeed = 100 * scale
 	cardWidth = 237.359 * scale
@@ -45,11 +46,15 @@ function love.load()
 		tilesQuad = {}
 	}
 --checks for OS and changes the dofiles
+	
+
 	if OS == "Android" then
+		dofile("storage/emulated/0/LOVEGAME/cardstouch.lua")
 		dofile("storage/emulated/0/LOVEGAME/quads.lua")
 		dofile("storage/emulated/0/LOVEGAME/cardslots.lua")
 		dofile("storage/emulated/0/LOVEGAME/drawfunctions.lua")
 	else
+		dofile("card/cardstouch.lua")
 		dofile("card/quads.lua")
 		dofile("card/cardslots.lua")
 		dofile("card/drawfunctions.lua")
@@ -138,10 +143,6 @@ Second Table
 --checks if cards are touching mouse
 	for i = 1, 12, 1 do
 		drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], true) --Ace1
-	end
-
-	for i = 1, 12, 1 do
-		cardSlots[i][9] = cardsTouch(cardSlots[i])
 	end
 
 --if cards are dropped, they zip back to the slot
