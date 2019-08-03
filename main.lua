@@ -25,6 +25,8 @@ only dummy cards can move when player picks them up. this should solve the probl
 
 
 function love.load()
+	mousePressed = nil
+	mouseReleased = nil
 	OS = love.system.getOS()
 	DT = nil
 	Ydraw = 0
@@ -58,11 +60,6 @@ function love.update(dt)
 	DT = dt
 	mouseDown = love.mouse.isDown(1)
 
-	if OS == "Android" then
-		dofile("storage/emulated/0/LOVEGAME/cardsdrag.lua")
-	else
-		dofile("card/cardsdrag.lua")
-	end
 	timer = timer + dt
 
 end
@@ -74,9 +71,25 @@ function love.keypressed(key, scancode, isrepeat)
 end
 
 function love.mousepressed(x, y, button, istouch)
+	if button == 1 then
+		mouseReleased = false
+		mousePressed = true
+	end
+end
+
+function love.mousereleased(x, y, button)
+	if button == 1 then
+		mousePressed = false
+		mouseReleased = true
+	end
 end
 
 function love.draw()
+	if OS == "Android" then
+		dofile("storage/emulated/0/LOVEGAME/cardsdrag.lua")
+	else
+		dofile("card/cardsdrag.lua")
+	end
 
 	love.graphics.setColor(1, 1, 1)
 --draws the green backboard
@@ -106,8 +119,6 @@ Second Table
 10 -- drag bool
 
 ]]--
-
---[[
 	cardSlots[1][6], cardSlots[1][7] = carZip(cardSlots[1][4], cardSlots[1][5], cardSlots[1][6], cardSlots[1][7], DT)
 	cardSlots[2][6], cardSlots[2][7] = carZip(cardSlots[2][4], cardSlots[2][5], cardSlots[2][6], cardSlots[2][7], DT)
 	cardSlots[3][6], cardSlots[3][7] = carZip(cardSlots[3][4], cardSlots[3][5], cardSlots[3][6], cardSlots[3][7], DT)
@@ -122,7 +133,8 @@ Second Table
 	cardSlots[10][6], cardSlots[10][7] = carZip(cardSlots[10][4], cardSlots[10][5], cardSlots[10][6], cardSlots[10][7], DT)
 	cardSlots[11][6], cardSlots[11][7] = carZip(cardSlots[11][4], cardSlots[11][5], cardSlots[11][6], cardSlots[11][7], DT)
 	cardSlots[12][6], cardSlots[12][7] = carZip(cardSlots[12][4], cardSlots[12][5], cardSlots[12][6], cardSlots[12][7], DT)
---]]
+
+
 --checks if cards are touching mouse
 	for i = 1, 12, 1 do
 		drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], true) --Ace1
