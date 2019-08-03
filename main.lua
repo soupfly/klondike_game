@@ -17,9 +17,9 @@ function love.load()
 	Ydraw = 0
 	dragging = false
 	timer = 0
---	love.window.setMode(800, 600)
+	love.window.setMode(640, 480)
 	scale = love.graphics.getWidth() / 1920
-	cardSpeed = 100 * scale
+	cardSpeed = 600 * scale
 	cardWidth = 237.359 * scale
 	cardHeight = 330.830 * scale
 	stackFront = 80 * scale
@@ -82,12 +82,9 @@ function love.draw()
 	end
 
 	love.graphics.setColor(1, 1, 1)
---draws the green backboard
 	love.graphics.draw(images.board, 0, 0, 0, scale, scale)
 	love.graphics.draw(images.grain, 0, 0, 0, scale, scale)
---places a backface card in the stack pile
 	love.graphics.draw(images.tiles, cardQuad.backCard, cardSlots[13][4], cardSlots[13][5], 0, scale, scale)
---main draw for the cards
 --[[
 
 First table
@@ -113,7 +110,7 @@ Second Table
 --checks if cards are touching mouse
 	for i = 1, 12, 1 do
 		cardSlots[i][6], cardSlots[i][7] = carZip(cardSlots[i][4], cardSlots[i][5], cardSlots[i][6], cardSlots[i][7], DT)	
-		drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], true) --Ace1
+		drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], cardSlots[i][10])
 	end
 
 --if cards are dropped, they zip back to the slot
