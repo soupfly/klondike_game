@@ -11,36 +11,36 @@ function love.load()
 	OS = love.system.getOS()
 	DT = nil
 	dragging = false
-	love.window.setMode(640, 480)
+--	love.window.setMode(640, 480)
+	--scale allows for scaling any window size. 
+	--it is loaded once and is not dynamic. 
+	--I may change this later so the window can be adjusted by the user and all the graphics don't look bad.
 	scale = love.graphics.getWidth() / 1920
+	--cardSpeed is the speed at which the cards zoom around using the cardZip function
 	cardSpeed = 600 * scale
 	cardWidth = 237.359 * scale
 	cardHeight = 330.830 * scale
-	stackFront = 80 * scale
-	stackBack = 20 * scale
+	--if the cards are stacked on top of each other they need an adjustment to the Y
+	stackFront = 80 * scale --forward face cards have a higher number so you can see what the cards are
+	stackBack = 20 * scale --back face cards have a smaller number
 	images = { 
-		grain = love.graphics.newImage("grain.png"),
 		board = love.graphics.newImage("background.png"), 
 		tiles = love.graphics.newImage("tileset.png"),
 		tilesQuad = {}
 	}
 --loads the functions
 	if OS == "Android" then
-		dofile("storage/emulated/0/LOVEGAME/cardstouch.lua")
 		dofile("storage/emulated/0/LOVEGAME/quads.lua")
 		dofile("storage/emulated/0/LOVEGAME/cardslots.lua")
 		dofile("storage/emulated/0/LOVEGAME/drawfunctions.lua")
-		dofile("storage/emulated/0/LOVEGAME/cardsdrag.lua")
 		dofile("storage/emulated/0/LOVEGAME/cardstouch.lua")
-
+		dofile("storage/emulated/0/LOVEGAME/cardlist.lua")
 	else
-		dofile("card/cardstouch.lua")
 		dofile("card/quads.lua")
 		dofile("card/cardslots.lua")
 		dofile("card/drawfunctions.lua")
-		dofile("card/cardsdrag.lua")
 		dofile("card/cardstouch.lua")
-
+		dofile("card/cardlist.lua")
 	end
 end
 
@@ -73,10 +73,11 @@ function love.mousereleased(x, y, button)
 end
 
 function love.draw()
+	cardSlots[7][2], cardSlots[7][3] = cardList[1][3], cardList[2][11]
+	cardSlots[3][2], cardSlots[3][3] = cardList[1][3], cardList[2][11]
 --draws the playing board
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.draw(images.board, 0, 0, 0, scale, scale)
---	love.graphics.draw(images.grain, 0, 0, 0, scale, scale)
 	love.graphics.draw(images.tiles, cardQuad.backCard, cardSlots[13][4], cardSlots[13][5], 0, scale, scale)
 --checks if cards are touching mouse
 	for i = 1, 12, 1 do
@@ -85,6 +86,8 @@ function love.draw()
 		--draws all the cards in the cardSlots table
 		--I have more plans to make cardSlots the container for all the cards being picked up and dropped around
 		--the board
-		drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], cardSlots[i][10])
+		if cardSlots[i][2] then
+			drawCard(cardSlots[i][2], cardSlots[i][3], cardSlots[i][1], cardSlots[i][6], cardSlots[i][7], cardSlots[i][10])
+		end
 	end
 end
