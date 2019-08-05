@@ -19,5 +19,13 @@ cardList = {
 		[11] = "jack",
 		[12] = "queen",
 		[13] = "king",
-	}
+	},
+	[3] = {}
 }
+cardlistAdd()
+
+cardList[3] = shuffle(cardList[3])
+
+for i = 1, 52, 1 do
+	print(cardList[3][i][1] .. "  " .. cardList[3][i][2])
+end

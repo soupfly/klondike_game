@@ -40,6 +40,8 @@ function love.load()
 		dofile("card/cardslots.lua")
 		dofile("card/drawfunctions.lua")
 		dofile("card/cardstouch.lua")
+		dofile("card/cardlistadd.lua")
+		dofile("card/shuffledeck.lua")
 		dofile("card/cardlist.lua")
 	end
 end

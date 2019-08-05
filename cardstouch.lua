@@ -12,6 +12,75 @@ function bool_check()
 	end
 end
 
+--	function cardDrag()
+--		if mousePressed then
+--			local cards = carSlots
+--			local carddrag
+--			if bool_check() then
+--				for i = 1, 12, 1 do
+--					if cardSlots[i][9] then
+--						dragging = true
+--						carddrag = cardSlots[i]
+--					end
+--				end
+--			end
+--			if not carddrag then
+--				dragging = false
+--				mousexA = love.mouse.getX()
+--				mouseyA = love.mouse.getY()
+--				mousexB = 0
+--				mouseyB = 0
+--			else
+--				if mousexA then
+--					mousexB = love.mouse.getX()
+--					mouseyB = love.mouse.getY()
+--					mousexB = mousexB - mousexA
+--					mouseyB = mouseyB - mouseyA
+--					carddrag[6] = carddrag[6] + mousexB
+--					carddrag[7] = carddrag[7] + mouseyB
+--				end
+--			end
+--		else
+--			dragging = false
+--		end
+--		if not dragging then
+--			for i = 1, 12, 1 do
+--				cardSlots[i][9] = cardsTouch(cardSlots[i])
+--			end
+--		end
+--		mousexA = love.mouse.getX()
+--		mouseyA = love.mouse.getY()
+--		mousexB = 0
+--		mouseyB = 0
+--	end
+
+--[[
+
+BRAINSTORMING NEW METHOD
+if card is dragged
+	move card face and number into slot 14 of cardSlots
+	store old cardslot location in slot 14 table so it can be moved back to old location if drop move fails(row number maybe)
+	remove card face and number from original slot
+if card is dropped
+	if card is touching slot
+		if card can be dropped
+			cardzip card to new spot
+			when cardzip finishes
+				change the status of new cardSlot
+		else
+				cardzip back to old spot
+	else
+		cardzip back to old spot
+------
+
+instead of changing cardzip, make a new function that uses cardzip to  move locations before hand
+Change the way cards are drawn from cardslots by making a table in each row that shows card stacks rather than single cards
+All active cards will go into slot 14 unless they are going through an animation or something
+
+
+]]--
+
+
 function cardDrag()
 	if mousePressed then
 		local cards = carSlots
