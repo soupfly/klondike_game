@@ -34,6 +34,8 @@ function love.load()
 		dofile("storage/emulated/0/LOVEGAME/cardslots.lua")
 		dofile("storage/emulated/0/LOVEGAME/drawfunctions.lua")
 		dofile("storage/emulated/0/LOVEGAME/cardstouch.lua")
+		dofile("storage/emulated/0/LOVEGAME/cardlistadd.lua")
+		dofile("storage/emulated/0/LOVEGAME/shuffledeck.lua")
 		dofile("storage/emulated/0/LOVEGAME/cardlist.lua")
 	else
 		dofile("card/quads.lua")
@@ -51,7 +53,10 @@ end
 function love.update(dt)
 	DT = dt
 	mouseDown = love.mouse.isDown(1)
-	cardDrag()
+--	cardDrag()
+	if mousePressed then
+		cardDrag()
+	end
 end
 
 function love.keypressed(key, scancode, isrepeat)
@@ -75,8 +80,9 @@ function love.mousereleased(x, y, button)
 end
 
 function love.draw()
-	cardSlots[7][2], cardSlots[7][3] = cardList[1][3], cardList[2][11]
-	cardSlots[3][2], cardSlots[3][3] = cardList[1][3], cardList[2][11]
+--adds cards to the deck
+	cardSlots[7][2], cardSlots[7][3] = cardSlots[3][1][2], cardSlots[3][1][1]
+	cardSlots[1][2], cardSlots[1][3] = cardList[1][4], cardList[2][1]
 --draws the playing board
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.draw(images.board, 0, 0, 0, scale, scale)
