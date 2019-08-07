@@ -9,6 +9,7 @@ function love.load()
 	mousePressed = nil
 	mouseReleased = nil
 	OS = love.system.getOS()
+	OSstring = nil
 	DT = nil
 	dragging = false
 --	love.window.setMode(640, 480)
@@ -30,22 +31,21 @@ function love.load()
 	}
 --loads the functions
 	if OS == "Android" then
-		dofile("storage/emulated/0/LOVEGAME/quads.lua")
-		dofile("storage/emulated/0/LOVEGAME/cardslots.lua")
-		dofile("storage/emulated/0/LOVEGAME/drawfunctions.lua")
-		dofile("storage/emulated/0/LOVEGAME/cardstouch.lua")
-		dofile("storage/emulated/0/LOVEGAME/cardlistadd.lua")
-		dofile("storage/emulated/0/LOVEGAME/shuffledeck.lua")
-		dofile("storage/emulated/0/LOVEGAME/cardlist.lua")
+		OSstring = "storage/emulated/0/LOVEGAME/"
 	else
-		dofile("card/quads.lua")
-		dofile("card/cardslots.lua")
-		dofile("card/drawfunctions.lua")
-		dofile("card/cardstouch.lua")
-		dofile("card/cardlistadd.lua")
-		dofile("card/shuffledeck.lua")
-		dofile("card/cardlist.lua")
+		OSstring = "card/"
 	end
+	dofile(OSstring .. "quads.lua")
+	dofile(OSstring .. "cardslots.lua")
+	dofile(OSstring .. "drawfunctions.lua")
+	dofile(OSstring .. "cardstouch.lua")
+	dofile(OSstring .. "cardlistadd.lua")
+	dofile(OSstring .. "shuffledeck.lua")
+	dofile(OSstring .. "cardlist.lua")
+	for i = 1, 13, 1 do
+		cardSlots[i][2], cardSlots[i][3] = cardList[3][i][1], cardList[3][i][2]
+	end
+
 end
 
 --I needed a global DT for my draw functions
@@ -53,10 +53,7 @@ end
 function love.update(dt)
 	DT = dt
 	mouseDown = love.mouse.isDown(1)
---	cardDrag()
-	if mousePressed then
-		cardDrag()
-	end
+	cardDrag()
 end
 
 function love.keypressed(key, scancode, isrepeat)
@@ -81,8 +78,6 @@ end
 
 function love.draw()
 --adds cards to the deck
-	cardSlots[7][2], cardSlots[7][3] = cardSlots[3][1][2], cardSlots[3][1][1]
-	cardSlots[1][2], cardSlots[1][3] = cardList[1][4], cardList[2][1]
 --draws the playing board
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.draw(images.board, 0, 0, 0, scale, scale)

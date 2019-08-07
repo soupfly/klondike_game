@@ -20,7 +20,7 @@ cardSlots = {
 		[7] = 58.69 * scale,
 		[8] = (cardWidth/2) + 301.98 * scale,
 		[9] = false,
-		[10] = false
+		[10] = true
 	},
 	[3] = {
 		[1] = "Ace3",
