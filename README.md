@@ -9,6 +9,8 @@ Recent additions
 	* New function that shuffles the cards in the table
 		-- shuffle can be called when a new game is made
 	* Changes to the way cards move
+		-- Added table manipulation for adding and removing cards
+			needs testing
 		-- Cards can be selected and dragged
 		-- Cards can zoom from point A to point B in a smooth manner
 

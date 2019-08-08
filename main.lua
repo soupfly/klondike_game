@@ -41,7 +41,8 @@ function love.load()
 	dofile(OSstring .. "cardstouch.lua")
 	dofile(OSstring .. "cardlistadd.lua")
 	dofile(OSstring .. "shuffledeck.lua")
-	dofile(OSstring .. "cardlist.lua")
+	dofile(OSstring.. "cardlist.lua")
+	dofile(OSstring.. "slotfunctions.lua")
 	for i = 1, 13, 1 do
 		cardSlots[i][2], cardSlots[i][3] = cardList[3][i][1], cardList[3][i][2]
 	end
