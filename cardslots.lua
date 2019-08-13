@@ -113,7 +113,7 @@ cardSlots = {
 		[10] = true
 	},
 	[12] = {
-		[1] = "pickSlot", 
+		[1] = "waste", 
 		[4] = 1245.83 * scale,
 		[5] = 58.69 * scale,
 		[6] = 1245.83 * scale,
@@ -123,7 +123,7 @@ cardSlots = {
 		[10] = true
 	},
 	[13] = {
-		[1] = "stack", --slot name
+		[1] = "deck", --slot name
 		[4] = 1650.33 * scale, --X position
 		[5] = 58.69 * scale, --Y position
 		[9] = false, --if card is touched

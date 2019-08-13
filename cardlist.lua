@@ -22,8 +22,6 @@ cardList = {
 	},
 	[3] = {}
 }
-cardlistAdd()
-cardList[3] = shuffle(cardList[3])
 --prints the position of the shuffled cards
 --[[
 for i = 1, #cardList[3], 1 do

@@ -30,19 +30,30 @@ function love.load()
 		tilesQuad = {}
 	}
 --loads the functions
+
 	if OS == "Android" then
 		OSstring = "storage/emulated/0/LOVEGAME/"
 	else
 		OSstring = "card/"
 	end
+-- comment out the top if statement when making a love file and uncomment the bottom
+--	OSstring = ""
+
+	dofile(OSstring .. "facedraw.lua")
 	dofile(OSstring .. "quads.lua")
 	dofile(OSstring .. "cardslots.lua")
-	dofile(OSstring .. "drawfunctions.lua")
+	dofile(OSstring .. "drawcard.lua")
 	dofile(OSstring .. "cardstouch.lua")
 	dofile(OSstring .. "cardlistadd.lua")
 	dofile(OSstring .. "shuffledeck.lua")
-	dofile(OSstring.. "cardlist.lua")
-	dofile(OSstring.. "slotfunctions.lua")
+	dofile(OSstring .. "cardlist.lua")
+	dofile(OSstring .. "cardzip.lua")
+	dofile(OSstring .. "addcard.lua")
+	dofile(OSstring .. "removecard.lua")
+
+	cardlistAdd()
+	cardList[3] = shuffle(cardList[3])
+
 	for i = 1, 13, 1 do
 		cardSlots[i][2], cardSlots[i][3] = cardList[3][i][1], cardList[3][i][2]
 	end
@@ -55,6 +66,7 @@ function love.update(dt)
 	DT = dt
 	mouseDown = love.mouse.isDown(1)
 	cardDrag()
+	print(cardDrag())
 end
 
 function love.keypressed(key, scancode, isrepeat)

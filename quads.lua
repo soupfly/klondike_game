@@ -9,11 +9,6 @@ faceDraw = {--face offsets
 	}
 }
 
-function face(x, y)
-	return love.graphics.newQuad(x * 70, y * 70, 69, 69, images.tiles:getDimensions())
-
-end
-
 cardQuad = {
 	frontCard = love.graphics.newQuad(
 		280, 281, 240, 331, 
